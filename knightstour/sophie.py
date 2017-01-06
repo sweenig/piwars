@@ -11,7 +11,7 @@ from time import sleep
 from sense_emu import SenseHat
 sense = SenseHat()
 sense.clear()
-w = (128,128,128)
+w = (255,255,255)
 b = (0,0,0)
 k = (0,0,255)
 blankboard = [[w,b,w,b,w,b,w,b],
