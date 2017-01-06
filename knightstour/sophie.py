@@ -13,7 +13,8 @@ sense = SenseHat()
 sense.clear()
 w = (255,255,255)
 b = (0,0,0)
-k = (0,0,255)
+k = (0,0,255) #color for the knight
+p = (240,248,255) #color for previous path spaces
 blankboard = [[w,b,w,b,w,b,w,b],
               [b,w,b,w,b,w,b,w],
               [w,b,w,b,w,b,w,b],
@@ -107,9 +108,12 @@ class KnightsTour:
 			#self.print_board()
 			#print path
 			#print "Done solving!"
+			prev_x,prev_y = path[0][0],path[0][1]
 			for space in path:
+				sense.set_pixel(prev_x,prev_y,p)
 				sense.set_pixel(space[0],space[1],k)
-				sleep(0.5)
+				prev_x,prev_y = space[0],space[1]
+				sleep(0.25)
 			sys.exit(1)
 		else:
 			sorted_neighbours = self.sort_lonely_neighbors(to_visit)
@@ -125,6 +129,6 @@ class KnightsTour:
 				sys.exit(1)
 
 kt = KnightsTour(8, 8)
-startpos = tuple(int(x.strip()) for x in raw_input().split(','))
+startpos = tuple(int(x.strip()) for x in raw_input('Enter the starting position in the format X,Y').split(','))
 #kt.tour(1, [], (0,0))
 kt.tour(1,[],startpos)
