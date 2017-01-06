@@ -15,13 +15,13 @@ w = (128,128,128)
 b = (0,0,0)
 k = (0,0,255)
 blankboard = [[w,b,w,b,w,b,w,b],
-							[b,w,b,w,b,w,b,w],
-							[w,b,w,b,w,b,w,b],
-							[b,w,b,w,b,w,b,w],
-							[w,b,w,b,w,b,w,b],
-							[b,w,b,w,b,w,b,w],
-							[w,b,w,b,w,b,w,b],
-							[b,w,b,w,b,w,b,w]]
+              [b,w,b,w,b,w,b,w],
+              [w,b,w,b,w,b,w,b],
+              [b,w,b,w,b,w,b,w],
+              [w,b,w,b,w,b,w,b],
+              [b,w,b,w,b,w,b,w],
+              [w,b,w,b,w,b,w,b],
+              [b,w,b,w,b,w,b,w]]
 sense.set_pixels(sum(blankboard,[]))
 
 class KnightsTour:
@@ -105,8 +105,8 @@ class KnightsTour:
 		#print "Visiting: ", to_visit
 		if n == self.w * self.h: #if every grid is filled
 			#self.print_board()
-			print path
-			print "Done solving!"
+			#print path
+			#print "Done solving!"
 			for space in path:
 				sense.set_pixel(space[0],space[1],k)
 				sleep(0.5)
@@ -124,6 +124,7 @@ class KnightsTour:
 				print "No path found"
 				sys.exit(1)
 
-#Define the size of grid. We are currently solving for an 8x8 grid
 kt = KnightsTour(8, 8)
-kt.tour(1, [], (0,0))
+startpos = tuple(int(x.strip()) for x in raw_input().split(','))
+#kt.tour(1, [], (0,0))
+kt.tour(1,[],startpos)
