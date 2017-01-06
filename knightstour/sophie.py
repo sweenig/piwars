@@ -8,13 +8,17 @@ http://blog.justsophie.com/algorithm-for-knights-tour-in-python/
 """
 import sys
 from time import sleep
-from sense_emu import SenseHat
+if raw_input('Use real sense hat? (Y/N)').lower() == 'y':
+	from sense_hat import SenseHat
+else:
+	from sense_emu import SenseHat
+
 sense = SenseHat()
 sense.clear()
 w = (255,255,255)
 b = (0,0,0)
 k = (0,0,255) #color for the knight
-p = (192,192,255) #color for previous path spaces
+p = (0,255,0) #color for previous path spaces
 blankboard = [[w,b,w,b,w,b,w,b],
               [b,w,b,w,b,w,b,w],
               [w,b,w,b,w,b,w,b],
@@ -23,7 +27,7 @@ blankboard = [[w,b,w,b,w,b,w,b],
               [b,w,b,w,b,w,b,w],
               [w,b,w,b,w,b,w,b],
               [b,w,b,w,b,w,b,w]]
-sense.set_pixels(sum(blankboard,[]))
+#sense.set_pixels(sum(blankboard,[]))
 
 class KnightsTour:
 
