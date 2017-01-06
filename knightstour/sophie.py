@@ -76,6 +76,7 @@ class KnightsTour:
 				sense.set_pixel(prev_x,prev_y,p) #mark the previous position with a lighter color
 				sense.set_pixel(space[0],space[1],k) #mark the current position of the knight
 				prev_x,prev_y = space[0],space[1] #save the current position as the previous position
+				sense.set_pixel(startpos[0],startpos[1],(255,0,0)) #mark the starting position
 				sleep(0.25) #give the user a chance to see where things are (animation speed)
 			sys.exit(1) #exit the script because it was successful (if we return, the assumption is that it was unsuccessful)
 		else: #not every space is filled
