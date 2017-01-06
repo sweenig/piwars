@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-
-"""
-This code generates the path required for a knight's tour 
-around a chessboard with user-specified dimensions
-Written by Sophie Li, 2016
-http://blog.justsophie.com/algorithm-for-knights-tour-in-python/
-"""
 import sys
 from time import sleep
 if raw_input('Use real sense hat? (Y/N)').lower() == 'y':
@@ -19,15 +11,16 @@ w = (255,255,255)
 b = (0,0,0)
 k = (0,0,255) #color for the knight
 p = (0,255,0) #color for previous path spaces
-blankboard = [[w,b,w,b,w,b,w,b],
-              [b,w,b,w,b,w,b,w],
-              [w,b,w,b,w,b,w,b],
-              [b,w,b,w,b,w,b,w],
-              [w,b,w,b,w,b,w,b],
-              [b,w,b,w,b,w,b,w],
-              [w,b,w,b,w,b,w,b],
-              [b,w,b,w,b,w,b,w]]
-#sense.set_pixels(sum(blankboard,[]))
+if raw_input('Draw checkerboard? (Y/N)').lower() == 'y':
+	blankboard = [[w,b,w,b,w,b,w,b],
+                [b,w,b,w,b,w,b,w],
+                [w,b,w,b,w,b,w,b],
+                [b,w,b,w,b,w,b,w],
+                [w,b,w,b,w,b,w,b],
+                [b,w,b,w,b,w,b,w],
+                [w,b,w,b,w,b,w,b],
+                [b,w,b,w,b,w,b,w]]
+	sense.set_pixels(sum(blankboard,[]))
 
 class KnightsTour:
 
@@ -84,7 +77,7 @@ class KnightsTour:
 				sense.set_pixel(space[0],space[1],k) #mark the current position of the knight
 				prev_x,prev_y = space[0],space[1] #save the current position as the previous position
 				sleep(0.25) #give the user a chance to see where things are (animation speed)
-			sys.exit(1) #exit the script because it was successful
+			sys.exit(1) #exit the script because it was successful (if we return, the assumption is that it was unsuccessful)
 		else: #not every space is filled
 			sorted_neighbours = self.sort_lonely_neighbors(to_visit) #figure out the best order to try legal moves against
 			for neighbor in sorted_neighbours: #for every legal move
@@ -94,9 +87,9 @@ class KnightsTour:
 			try:
 				path.pop() #take the most recent attempt off the path
 			except IndexError: #if there's nothing on the path to take off...
+				print('No available paths.')
 				sys.exit(1) #exit unsuccessfully
 
 kt = KnightsTour(8, 8) #instantiate the board
 startpos = tuple(int(x.strip()) for x in raw_input('Enter the starting position in the format X,Y: ').split(',')) #prompt for starting position
-#kt.tour(1, [], (0,0)) #start looking for a path from 0,0
 kt.tour(1,[],startpos) #start looking for a path from the prompted location
