@@ -49,7 +49,7 @@ class KnightsTour:
 		since these are at the edges of the chessboard and cannot 
 		be reached easily if done later in the traversal
 		"""
-		neighbor_list = self.generate_legal_moves(to_visit) #get all the legal moves
+		neighbor_list = self.generate_legal_moves(to_visit) #get all the moves from the current position that are on the board
 		empty_neighbours = [] #make a place to list all the empty neighbors
 		for neighbor in neighbor_list: #for each legal move
 			np_value = self.board[neighbor[0]][neighbor[1]] #get the value of the first legal move
@@ -58,10 +58,10 @@ class KnightsTour:
 		scores = [] #make a place to store the scores
 		for empty in empty_neighbours: #for all legal moves that haven't been visited
 			score = [empty, 0] #give the move a starting score of 0
-			moves = self.generate_legal_moves(empty) #figure out which of the empty & legal moves are legal (shouldn't this already be the case?)
-			for m in moves: #for all legal moves, which are empty, which are legal
+			moves = self.generate_legal_moves(empty) #figure out the moves from each of to_visit's neighbors
+			for m in moves: #for all legal moves
 				if self.board[m[0]][m[1]] == 0: #if the move is 0, it's empty, give it a higher score
-					score[1] += 1 #increment his score
+					score[1] += 1 #increment the neighbor for each of the neighbor's empty neighbors
 			scores.append(score) #put the score for this move into the list
 		scores_sort = sorted(scores, key = lambda s: s[1]) #sort by the score
 		sorted_neighbours = [s[0] for s in scores_sort] #put the moves in order into the sorted neighbors list
