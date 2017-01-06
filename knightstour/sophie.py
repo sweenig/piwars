@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """
 This code generates the path required for a knight's tour 
 around a chessboard with user-specified dimensions
@@ -14,7 +12,7 @@ sense.clear()
 w = (255,255,255)
 b = (0,0,0)
 k = (0,0,255) #color for the knight
-p = (240,248,255) #color for previous path spaces
+p = (192,192,255) #color for previous path spaces
 blankboard = [[w,b,w,b,w,b,w,b],
               [b,w,b,w,b,w,b,w],
               [w,b,w,b,w,b,w,b],
@@ -129,6 +127,6 @@ class KnightsTour:
 				sys.exit(1)
 
 kt = KnightsTour(8, 8)
-startpos = tuple(int(x.strip()) for x in raw_input('Enter the starting position in the format X,Y').split(','))
+startpos = tuple(int(x.strip()) for x in raw_input('Enter the starting position in the format X,Y: ').split(','))
 #kt.tour(1, [], (0,0))
 kt.tour(1,[],startpos)
