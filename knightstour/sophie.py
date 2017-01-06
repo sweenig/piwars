@@ -1,3 +1,10 @@
+"""
+This code generates the path required for a knight's tour 
+around a chessboard with user-specified dimensions
+Written by Sophie Li, 2016, modified for use with SenseHat by Stuart Weenig
+http://blog.justsophie.com/algorithm-for-knights-tour-in-python/
+"""
+
 import sys
 from time import sleep
 if raw_input('Use real sense hat? (Y/N)').lower() == 'y':
