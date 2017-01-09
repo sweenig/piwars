@@ -78,6 +78,7 @@ class KnightsTour:
 		self.board[to_visit[0]][to_visit[1]] = n #put the current count in the new position
 		path.append(to_visit) #append the newest vertex to the current point
 		if n == self.w * self.h: #if every grid is filled
+			print(path) #output the solution
 			prev_x,prev_y = path[0][0],path[0][1] #save the starting position as the new position
 			for space in path: #mark the path
 				sense.set_pixel(prev_x,prev_y,p) #mark the previous position with a lighter color
